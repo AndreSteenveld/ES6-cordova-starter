@@ -5,5 +5,5 @@ var del = require('del');
 
 // Empty the build dir.
 gulp.task('clean', function (done) {
-  del([global.paths.dist + '/*'], done);
+	del([global.paths.dist + '/*', "!" + global.paths.dist + "/.gitkeep" ], done);
 });
