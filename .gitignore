@@ -19,5 +19,10 @@ application/platforms/*
 #!application/plugins/*.json
 #!application/plugins/.gitkeep
 
+# Ignore all our dependency directors
+node_modules/
+jspm_packages/
+bower_components/
+
 # Because mac is a little derpy
 .DS_Store
