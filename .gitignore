@@ -1,2 +1,23 @@
 # We are going to use the www directory as a place to dump the build artifacts so we can kick off cordova
-application/www
+application/www/*
+!application/www/.gitkeep
+
+#
+# Also we are not going to bother commiting the build artifacts from cordova
+#
+# For now whenever starting the project you will need to add by hand when loading the project, this seems to
+# stored into the platforms.json file but there is no real way to restore it...
+#
+application/platforms/*
+!application/platforms/.gitkeep
+!application/platforms/platforms.json
+
+#
+# Ok so it seems that even though the plugins are managed with some sort of package manager it is not possible to restore ()
+#
+#application/plugins/*
+#!application/plugins/*.json
+#!application/plugins/.gitkeep
+
+# Because mac is a little derpy
+.DS_Store
