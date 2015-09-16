@@ -13,24 +13,10 @@
 
 var gulp = require('gulp');
 var requireDir = require('require-dir');
+var configuration = require( "./configuration" );
 
 // Specify paths & globbing patterns for tasks.
-global.paths = {
-	// HTML sources.
-	'html': './src/*.html',
-	// JS sources.
-	'js': './src/js/**/*.js',
-	// SASS sources.
-	'sass': './src/scss/**/*.scss',
-	// Image sources.
-	'img': './src/img/*',
-	// Sources folder.
-	'src': './src',
-	// Compiled CSS folder.
-	'css': './application/www/css',
-	// Distribution folder.
-	'dist': './application/www'
-};
+global.paths = configuration.paths;
 
 // Require all tasks in the 'gulp' folder.
 requireDir('./gulp', { recurse: false });

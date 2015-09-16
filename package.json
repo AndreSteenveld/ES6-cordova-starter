@@ -15,7 +15,7 @@
     "url": ""
   },
   "readmeFilename": "README.md",
-  "license": "CC0",
+  "license": "CC0-1.0",
   "scripts": {
     "test": "karma start",
     "test:watch": "karma start --no-single-run",
@@ -38,7 +38,7 @@
     "doc": "docs",
     "test": "test",
     "baseURL": "src",
-    "packages": ""
+    "packages": "src/external"
   },
   "devDependencies": {
     "chai": "^3.0.0",
@@ -65,11 +65,13 @@
     "gulp-uglify": "^1.2.0",
     "gulp-util": "^3.0.5",
     "imagemin-pngquant": "^4.1.0",
+    "jspm": "^0.16.2",
     "karma": "^0.12.36",
+    "karma-babel-preprocessor": "^5.2.2",
     "karma-chai": "^0.1.0",
     "karma-chai-as-promised": "^0.1.2",
     "karma-chrome-launcher": "^0.1.12",
-    "karma-jspm": "^1.1.5",
+    "karma-jspm": "^2.0.0",
     "karma-mocha": "^0.1.10",
     "karma-mocha-reporter": "^1.0.2",
     "karma-sinon-chai": "^1.0.0",
@@ -82,6 +84,7 @@
     "directories": {
       "baseURL": "src",
       "doc": "docs",
+      "packages": "src/external",
       "test": "test"
     },
     "devDependencies": {
