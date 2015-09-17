@@ -14,6 +14,8 @@ var runSeq = require('run-sequence');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 
+var configuration = require( "../configuration" );
+
 // One build task to rule them all.
 gulp.task('build', function (done) {
 	runSeq('clean', ['buildsass', 'buildimg', 'buildjs'], 'buildhtml', done);
@@ -33,14 +35,15 @@ gulp.task('buildsass', function () {
 });
 
 // Build JS for distribution.
-gulp.task('buildjs', function () {
-	exec('npm run buildjs', function (err, stdout, stderr) {
-		if (err) {
-			throw err;
-		} else {
-			console.log('Build complete!');
-		}
-	});
+gulp.task( 'buildjs', function ( ){
+
+	var jspm = require( "jspm" ),
+		builder = new jspm.Builder( );
+
+	builder.config({ babelOptions: configuration.babel.options });
+
+	return builder.buildSFX( "js/app", "./application/www/app.js" );
+
 });
 
 // Build HTML for distribution.
