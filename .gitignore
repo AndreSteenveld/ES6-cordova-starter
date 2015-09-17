@@ -8,16 +8,19 @@ application/www/*
 # For now whenever starting the project you will need to add by hand when loading the project, this seems to
 # stored into the platforms.json file but there is no real way to restore it...
 #
+# As it turns out it is best to restore everything from the config.xml file and clean out the entire platform
+# and plugins directories. We are going to .gitkeep them though
+#
 application/platforms/*
 !application/platforms/.gitkeep
-!application/platforms/platforms.json
+#!application/platforms/platforms.json
 
 #
 # Ok so it seems that even though the plugins are managed with some sort of package manager it is not possible to restore ()
 #
-#application/plugins/*
+application/plugins/*
+!application/plugins/.gitkeep
 #!application/plugins/*.json
-#!application/plugins/.gitkeep
 
 # Ignore all our dependency directors
 node_modules/
@@ -26,3 +29,7 @@ bower_components/
 
 # Because mac is a little derpy
 .DS_Store
+
+# Ignore the generated babel configuration file, this one can be generated doing a build.
+src/config.js
+src/external/
