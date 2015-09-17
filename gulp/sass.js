@@ -6,10 +6,13 @@ var concat = require('gulp-concat');
 var connect = require('gulp-connect');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
+var sassJspm = require('sass-jspm-importer');
 
 var sassOptions = {
 	errLogToConsole: true,
-	outputStyle: 'expanded'
+	outputStyle: 'expanded',
+	functions: sassJspm.resolve_function('/lib/'),
+	importer: sassJspm.importer
 };
 
 // Compile SASS with sourcemaps + livereload.
