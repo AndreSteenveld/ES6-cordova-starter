@@ -25,10 +25,10 @@ gulp.task('buildsass', function () {
 		.pipe(sass().on('error', sass.logError))
 		.pipe(concat('app.css'))
 		.pipe(autoprefixer())
-		.pipe(minifyCss())
-		.pipe(rename({
-			suffix: '.min'
-		}))
+		// .pipe(minifyCss())
+		// .pipe(rename({
+		// 	suffix: '.min'
+		// }))
 		.pipe(gulp.dest(global.paths.dist));
 });
 
@@ -37,8 +37,7 @@ gulp.task('buildjs', function () {
 	exec('npm run buildjs', function (err, stdout, stderr) {
 		if (err) {
 			throw err;
-		}
-		else {
+		} else {
 			console.log('Build complete!');
 		}
 	});
@@ -47,11 +46,11 @@ gulp.task('buildjs', function () {
 // Build HTML for distribution.
 gulp.task('buildhtml', function () {
 	gulp.src(global.paths.html)
-		.pipe(replace('css/app.css', 'app.min.css'))
-		.pipe(replace('lib/system.js', 'app.min.js'))
-		.pipe(replace('<script src="config.js"></script>', ''))
-		.pipe(replace("<script>System.import('./js/app')</script>", ''))
-		.pipe(minifyHtml())
+		// .pipe(replace('css/app.css', 'app.min.css'))
+		// .pipe(replace('lib/system.js', 'app.min.js'))
+		// .pipe(replace('<script src="config.js"></script>', ''))
+		// .pipe(replace("<script>System.import('./js/app')</script>", ''))
+		// .pipe(minifyHtml())
 		.pipe(gulp.dest(global.paths.dist));
 });
 
