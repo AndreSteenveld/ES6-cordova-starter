@@ -5,6 +5,8 @@ var configuration = require( "./configuration" );
 module.exports = function(config) {
 	config.set({
 
+		//plugins: [ 'karma-babel-preprocessor' ],
+
 		// base path that will be used to resolve all patterns (eg. files, exclude)
 		basePath: '.',
 
@@ -15,10 +17,10 @@ module.exports = function(config) {
 
 		jspm: {
 			useBundles: true,
-			config: 'src/config.js',
+			config: '/src/config.js',
 			loadFiles: ['test/**/*.js'],
 			serveFiles: ['src/js/**/*.js'],
-			packages: 'src/external'
+			packages: '/src/external/'
 		},
 
 
@@ -29,7 +31,7 @@ module.exports = function(config) {
 		// list of files to exclude
 		//exclude: [ 'src/external/**/*' ],
 		proxies: {
-			"/external/": "/base/src/external/",
+			"/base/external/": "/base/src/external/",
 			"/test/": "/base/test/",
 			"/src/": "/base/src/"
 		},
@@ -38,9 +40,9 @@ module.exports = function(config) {
 		// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 		preprocessors: {
 			'test/**/*.js': ['babel'],
-			'!src/external/{,**}': ['babel']
+			'src/js/**/*.js': ['babel']
 		},
-		'babelPreprocessor': {
+		babelPreprocessor: {
 			options: {
 				sourceMap: 'inline',
 				modules: 'system',
