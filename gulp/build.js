@@ -13,12 +13,14 @@ var replace = require('gulp-replace');
 var runSeq = require('run-sequence');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
+var debug = require( "gulp-debug" );
+
 
 var configuration = require( "../configuration" );
 
 // One build task to rule them all.
 gulp.task('build', function (done) {
-	runSeq('clean', ['buildsass', 'buildimg', 'buildjs'], 'buildhtml', done);
+	runSeq('clean', ['buildsass', 'buildimg', 'buildjs'], "buildcopy", 'buildhtml', done);
 });
 
 // Build SASS for distribution.
@@ -34,6 +36,20 @@ gulp.task('buildsass', function () {
 		.pipe(gulp.dest(global.paths.dist));
 });
 
+gulp.task( "buildcopy", function( ){
+
+	gulp
+		.src(
+			[
+				configuration.paths.src + "/main.js",
+				configuration.paths.src + "/config.js",
+				configuration.paths.src + "/external/**/*"
+			],
+			{ base: configuration.paths.src }
+		)
+		.pipe( gulp.dest( global.paths.dist ) );
+});
+
 // Build JS for distribution.
 gulp.task( 'buildjs', function ( ){
 
@@ -42,7 +58,7 @@ gulp.task( 'buildjs', function ( ){
 
 	builder.config({ babelOptions: configuration.babel.options });
 
-	return builder.buildSFX( "js/app", "./application/www/app.js" );
+	return builder.buildStatic( "js/app", "./application/www/app.js", { runtime: true });
 
 });
 
