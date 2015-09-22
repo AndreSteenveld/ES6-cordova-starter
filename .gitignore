@@ -33,3 +33,5 @@ bower_components/
 # Ignore the generated babel configuration file, this one can be generated doing a build.
 src/config.js
 src/external/
+
+npm-debug.log

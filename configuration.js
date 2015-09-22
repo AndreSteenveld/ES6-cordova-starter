@@ -1,5 +1,8 @@
+var path = require( "path" );
 
 var c = configuration = module.exports = {
+
+	karma_configuration_file: path.resolve( __dirname + "/karma.conf.js" ),
 
 	babel: {
 		options: {
